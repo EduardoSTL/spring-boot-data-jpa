@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.NonNull;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -86,5 +85,4 @@ public class Cliente implements Serializable {
         return serialVersionUID;
     }
     private static final long serialVersionUID = 1L;
-
 }

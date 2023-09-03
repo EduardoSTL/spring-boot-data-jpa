@@ -16,7 +16,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,8 +41,7 @@ public class ClienteControler {
     }
 
     @GetMapping(value = "/ver/{id}")
-    public String ver(@PathVariable(value = "id") Long id, Map<String, Object> model,
-                      RedirectAttributes flash) {
+    public String ver(@PathVariable(value ="id") Long id, Map<String, Object> model, RedirectAttributes flash){
         Cliente cliente = clienteService.findOne(id);
         if (cliente == null) {
             flash.addFlashAttribute("error", "El cliente no existe");
@@ -56,7 +54,6 @@ public class ClienteControler {
 
     @RequestMapping(value = "/form")
     public String crear(Map<String, Object> model) {
-
         Cliente cliente = new Cliente();
         model.put("cliente", cliente);
         model.put("titulo", "Formulario de Cliente");
@@ -64,8 +61,7 @@ public class ClienteControler {
     }
 
     @RequestMapping(value = "/form/{id}")
-    public String editar(@PathVariable(value = "id") Long id, Map<String, Object>
-            model, RedirectAttributes flash) {
+    public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
         Cliente cliente = null;
         if (id > 0) {
             cliente = clienteService.findOne(id);
@@ -102,7 +98,6 @@ public class ClienteControler {
 //                throw new RuntimeException(e);
             e.printStackTrace();
         }
-
         String mensajeFlash=(cliente.getId() != null)? "Cliente editado con éxito": "Cliente creado con exito";
 
         this.clienteService.save(cliente);
@@ -113,7 +108,6 @@ public class ClienteControler {
 
     @RequestMapping(value = "/eliminar/{id}")
     public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
-
         if (id > 0) {
             Cliente cliente = clienteService.findOne(id);
             clienteService.delete(id);

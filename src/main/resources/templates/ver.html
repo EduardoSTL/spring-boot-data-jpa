@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout/layout :: head"></head>
+<head th:replace="layout/layout :: head">
+
+  <!-- Agrega esto para imprimir la ruta en la consola del navegador -->
+  <script th:inline="javascript">
+    console.log([[${cliente.photo}]]);
+  </script>
+
+</head>
 <body>
 
 <header th:replace="layout/layout :: header"></header>
@@ -12,7 +19,7 @@
     <div class="card-body">
 
       <img th:if="${#strings.length(cliente.photo) > 0}" class="img-thumbnail rounded float-left"
-           style="max-width: 25%;" th:src="@{'/uploads/' + ${cliente.photo}}"
+           style="max-width: 25%;" th:src="@{'../uploads/' + ${cliente.photo}}"
            th:alt="${cliente.photo}" />
 
       <ul class="list-group">

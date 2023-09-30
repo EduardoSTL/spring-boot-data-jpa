@@ -49,6 +49,9 @@ public class ClienteControler {
         }
         model.put("cliente", cliente);
         model.put("Titulo", "Detalle Cliente: " + cliente.getNombre());
+
+        // Log de la ruta de la imagen
+        System.out.println("Ruta de la imagen: " + "file:/C:/Temp/uploads/" + cliente.getPhoto());
         return "ver";
     }
 

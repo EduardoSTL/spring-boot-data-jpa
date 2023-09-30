@@ -60,6 +60,7 @@ public class ClienteControler {
         return "form";
     }
 
+    //confirm force push
     @RequestMapping(value = "/form/{id}")
     public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
         Cliente cliente = null;
